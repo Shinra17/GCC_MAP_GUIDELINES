@@ -84,7 +84,7 @@ function App() {
               Supreme Student Council
             </h2>
             <p className="text-[8px] sm:text-[10px] text-slate-400 font-medium tracking-wide sm:tracking-wider mt-0.5 leading-none truncate">
-              Gingoog City Colleges
+              Gingoog City Colleges, Inc.
             </p>
           </div>
         </div>
