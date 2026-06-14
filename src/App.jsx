@@ -4,27 +4,27 @@ import { Anex_building } from './components/Anex_building';
 import './App.css';
 
 const coreOfficers = [
-  { name: "Hon. President Name", role: "President", img: "/press.png" },
-  { name: "Hon. Vice Pres Name", role: "Vice President", img: "/vp.png" },
-  { name: "Hon. Secretary Name", role: "Secretary", img: "/sec.png" },
-  { name: "Hon. Treasurer Name", role: "Treasurer", img: "/tres.png" },
-  { name: "Hon. Auditor Name", role: "Auditor", img: "/aud.png" },
-  { name: "Hon. P.I.O. Name", role: "P.I.O.", img: "/pio.png" },
+  { name: "Rolando E. Jacalan", role: "President", img: "/press.png" },
+  { name: "Noel Tacum", role: "Vice President", img: "/vp.png" },
+  { name: "Jia B. Rugay", role: "Secretary", img: "/sec.png" },
+  { name: "Rowena C. Margate", role: "Treasurer", img: "/tres.png" },
+  { name: "Mi Flearch C. Baguio", role: "Auditor", img: "/aud.png" },
+  { name: "Mary Jane C. Mata", role: "P.I.O.", img: "/pio.png" },
 ];
 
 const senators = [
-  { name: "Hon. Lead Senator", role: "Senate President", img: "/7.png", isSenateHead: true },
-  { name: "Hon. Senator Name 2", role: "Senator", img: "/8.png" },
-  { name: "Hon. Senator Name 3", role: "Senator", img: "/9.png" },
-  { name: "Hon. Senator Name 4", role: "Senator", img: "/10.png" },
-  { name: "Hon. Senator Name 5", role: "Senator", img: "/11.png" },
-  { name: "Hon. Senator Name 6", role: "Senator", img: "/12.png" },
-  { name: "Hon. Senator Name 7", role: "Senator", img: "/13.png" },
-  { name: "Hon. Senator Name 8", role: "Senator", img: "/14.png" },
-  { name: "Hon. Senator Name 9", role: "Senator", img: "/15.png" },
-  { name: "Hon. Senator Name 10", role: "Senator", img: "/18.png" },
-  { name: "Hon. Senator Name 11", role: "Senator", img: "/16.png" },
-  { name: "Hon. Senator Name 12", role: "Senator", img: "/17.png" },
+  { name: "Edward B. Gaddi", role: "Senate President", img: "/7.png", isSenateHead: true },
+  { name: "Chiezel Joy Galgao", role: "Senator", img: "/8.png" },
+  { name: "Mariane Nicole A. Visto", role: "Senator", img: "/9.png" },
+  { name: "Michael Andrew Surat", role: "Senator", img: "/10.png" },
+  { name: "Christian B. Sombrio", role: "Senator", img: "/11.png" },
+  { name: "Kate Chelou S. Bautista", role: "Senator", img: "/12.png" },
+  { name: "Kianen Tutor", role: "Senator", img: "/13.png" },
+  { name: "Kent Daryl Galario", role: "Senator", img: "/14.png" },
+  { name: "Jude Rowell Quojial", role: "Senator", img: "/15.png" },
+  { name: "Vernal Billy Joe E. Moninio", role: "Senator", img: "/18.png" },
+  { name: "Thiza Kim E. Signar", role: "Senator", img: "/16.png" },
+  { name: "Marchine Angga ", role: "Senator", img: "/17.png" },
 ];
 
 function App() {
@@ -67,31 +67,31 @@ function App() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] sm:w-[600px] h-[300px] sm:h-[600px] rounded-full bg-emerald-400/10 blur-[120px] pointer-events-none"></div>
 
       {/* Global Header */}
-<header className="relative z-20 w-full max-w-7xl mx-auto flex flex-row items-center justify-between border-b border-white/10 pb-4 mb-6 gap-2 sm:gap-4 flex-nowrap">
-  <div className="flex items-center gap-1.5 sm:gap-3 min-w-0">
-    <img src="/GCC_LOGO.png" alt="GCC Logo" className="w-8 h-8 sm:w-12 sm:h-12 object-contain rounded-full bg-white/5 p-1 border border-white/20 shadow-inner flex-shrink-0" />
-    <div className="h-5 sm:h-6 w-[1px] bg-white/20 flex-shrink-0"></div>
-    <img src="/SSC_LOGO.png" alt="SSC Logo" className="w-8 h-8 sm:w-12 sm:h-12 object-contain rounded-full bg-white/5 p-1 border border-white/20 shadow-inner flex-shrink-0" />
-    <div className="h-5 sm:h-6 w-[1px] bg-white/20 flex-shrink-0"></div>  
-    <div className="ml-0.5 min-w-0">
-      <h2 className="text-[9px] sm:text-xs font-black tracking-wider sm:tracking-widest text-emerald-400 uppercase leading-tight truncate">
-        Supreme Student Council
-      </h2>
-      <p className="text-[8px] sm:text-[10px] text-slate-400 font-medium tracking-wide sm:tracking-wider mt-0.5 leading-none truncate">
-        Gingoog City Colleges
-      </p>
-    </div>
-  </div>
+      <header className="relative z-20 w-full max-w-7xl mx-auto flex flex-row items-center justify-between border-b border-white/10 pb-4 mb-6 gap-2 sm:gap-4 flex-nowrap">
+        <div className="flex items-center gap-1.5 sm:gap-3 min-w-0">
+          <img src="/GCC_LOGO.png" alt="GCC Logo" className="w-8 h-8 sm:w-12 sm:h-12 object-contain rounded-full bg-white/5 p-1 border border-white/20 shadow-inner flex-shrink-0" />
+          <div className="h-5 sm:h-6 w-[1px] bg-white/20 flex-shrink-0"></div>
+          <img src="/SSC_LOGO.png" alt="SSC Logo" className="w-8 h-8 sm:w-12 sm:h-12 object-contain rounded-full bg-white/5 p-1 border border-white/20 shadow-inner flex-shrink-0" />
+          <div className="h-5 sm:h-6 w-[1px] bg-white/20 flex-shrink-0"></div>  
+          <div className="ml-0.5 min-w-0">
+            <h2 className="text-[9px] sm:text-xs font-black tracking-wider sm:tracking-widest text-emerald-400 uppercase leading-tight truncate">
+              Supreme Student Council
+            </h2>
+            <p className="text-[8px] sm:text-[10px] text-slate-400 font-medium tracking-wide sm:tracking-wider mt-0.5 leading-none truncate">
+              Gingoog City Colleges
+            </p>
+          </div>
+        </div>
 
-  {currentPage === 'welcome' && (
-    <button 
-      onClick={() => setShowRoster(true)}
-      className="text-[9px] sm:text-xs font-bold uppercase tracking-wider px-2.5 py-1.5 sm:px-4 sm:py-2 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 text-white transition-all flex-shrink-0 whitespace-nowrap"
-    >
-      Council Officials
-    </button>
-  )}
-</header>
+        {currentPage === 'welcome' && (
+          <button 
+            onClick={() => setShowRoster(true)}
+            className="text-[9px] sm:text-xs font-bold uppercase tracking-wider px-2.5 py-1.5 sm:px-4 sm:py-2 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 text-white transition-all flex-shrink-0 whitespace-nowrap"
+          >
+            Council Officials
+          </button>
+        )}
+      </header>
 
       {/* Main Content Render Area */}
       <main className="relative z-10 w-full max-w-7xl mx-auto flex-1 flex items-center justify-center my-auto">
@@ -278,22 +278,22 @@ function App() {
                 
                 {/* President */}
                 <div className="flex flex-col items-center">
-                  <div className="w-20 h-20 rounded-full border-2 border-emerald-400 bg-white/5 overflow-hidden shadow-md">
+                  <div className="w-36 h-36 rounded-full border-2 border-emerald-400 bg-white/5 overflow-hidden shadow-md">
                     <img src={coreOfficers[0]?.img} alt={coreOfficers[0]?.name} className="w-full h-full object-cover" />
                   </div>
-                  <h4 className="text-xs font-bold text-white mt-2">{coreOfficers[0]?.name}</h4>
-                  <p className="text-[10px] text-emerald-400 font-medium">{coreOfficers[0]?.role}</p>
+                  <h4 className="text-sm font-bold text-white mt-2">{coreOfficers[0]?.name}</h4>
+                  <p className="text-xs text-emerald-400 font-medium">{coreOfficers[0]?.role}</p>
                 </div>
 
                 {/* Remaining Officers */}
-                <div className="flex flex-wrap justify-center gap-3">
+                <div className="flex flex-wrap justify-center gap-4">
                   {coreOfficers.slice(1).map((officer, i) => (
-                    <div key={i} className="flex flex-col items-center bg-white/[0.02] border border-white/5 p-3 rounded-xl text-center shadow-sm hover:border-white/10 transition-colors w-[calc(50%-6px)] sm:w-[calc(33.333%-8px)] md:w-[130px] flex-shrink-0">
-                      <div className="w-12 h-12 rounded-full border border-white/10 bg-white/5 overflow-hidden">
+                    <div key={i} className="flex flex-col items-center bg-white/[0.02] border border-white/5 p-3 rounded-xl text-center shadow-sm hover:border-white/10 transition-colors w-[calc(50%-8px)] sm:w-[calc(33.333%-12px)] md:w-[150px] flex-shrink-0">
+                      <div className="w-24 h-24 rounded-full border border-white/10 bg-white/5 overflow-hidden">
                         <img src={officer.img} alt={officer.name} className="w-full h-full object-cover" />
                       </div>
-                      <h4 className="text-[11px] font-bold text-white mt-2.5 truncate w-full px-0.5">{officer.name}</h4>
-                      <p className="text-[9px] text-emerald-400/90 font-medium mt-0.5">{officer.role}</p>
+                      <h4 className="text-xs font-bold text-white mt-2.5 truncate w-full px-0.5">{officer.name}</h4>
+                      <p className="text-[10px] text-emerald-400/90 font-medium mt-0.5">{officer.role}</p>
                     </div>
                   ))}
                 </div>
@@ -305,21 +305,21 @@ function App() {
                 
                 {/* Senate Head */}
                 <div className="flex flex-col items-center">
-                  <div className="w-16 h-16 rounded-full border border-emerald-400/60 bg-white/5 overflow-hidden">
+                  <div className="w-28 h-28 rounded-full border border-emerald-400/60 bg-white/5 overflow-hidden">
                     <img src={senators[0]?.img} alt={senators[0]?.name} className="w-full h-full object-cover" />
                   </div>
-                  <h4 className="text-[11px] font-bold text-white mt-2">{senators[0]?.name}</h4>
-                  <p className="text-[9px] text-emerald-300 font-medium">{senators[0]?.role}</p>
+                  <h4 className="text-xs font-bold text-white mt-2">{senators[0]?.name}</h4>
+                  <p className="text-[10px] text-emerald-300 font-medium">{senators[0]?.role}</p>
                 </div>
 
                 {/* General Senators Grid */}
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                   {senators.slice(1).map((senator, i) => (
-                    <div key={i} className="flex flex-col items-center p-2 rounded-xl bg-white/[0.01] border border-white/5">
-                      <div className="w-11 h-11 rounded-full border border-white/10 bg-white/5 overflow-hidden">
+                    <div key={i} className="flex flex-col items-center p-3 rounded-xl bg-white/[0.01] border border-white/5">
+                      <div className="w-20 h-20 rounded-full border border-white/10 bg-white/5 overflow-hidden">
                         <img src={senator.img} alt={senator.name} className="w-full h-full object-cover" />
                       </div>
-                      <h4 className="text-[9px] font-medium text-white text-center mt-1.5 truncate w-full">{senator.name}</h4>
+                      <h4 className="text-[10px] font-semibold text-white text-center mt-2 truncate w-full">{senator.name}</h4>
                     </div>
                   ))}
                 </div>
