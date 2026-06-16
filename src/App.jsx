@@ -111,7 +111,7 @@ function App() {
               onClick={() => setShowRoster(true)}
               className="text-[9px] sm:text-xs font-bold uppercase tracking-wider px-3 py-2 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 text-white transition-all"
             >
-              Council Officials
+              Officials
             </button>
 
             {/* Menu Dropdown Toggle Button */}
