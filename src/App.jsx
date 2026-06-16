@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Main_building } from './components/Main_building';
 import { Anex_building } from './components/Anex_building';
 import { Contact } from './components/Contact';
-import Gallery from './components/Gallery'; // 1. Imported the Gallery component
+import Gallery from './components/Gallery'; 
 import './App.css';
 
 const coreOfficers = [
@@ -94,7 +94,7 @@ function App() {
           <div className="h-5 sm:h-6 w-[1px] bg-white/20 flex-shrink-0"></div>
           <img src="/SSC_LOGO.png" alt="SSC Logo" className="w-8 h-8 sm:w-11 sm:h-11 object-contain rounded-full bg-white/5 p-1 border border-white/20 shadow-inner flex-shrink-0" />
           <div className="h-5 sm:h-6 w-[1px] bg-white/20 flex-shrink-0"></div>  
-          <div className="ml-0.5 min-w-0" onClick={() => setCurrentPage('welcome')} className="cursor-pointer">
+          <div onClick={() => setCurrentPage('welcome')} className="cursor-pointer ml-0.5 min-w-0">
             <h2 className="text-[10px] sm:text-xs font-black tracking-wider sm:tracking-widest text-emerald-400 uppercase leading-tight truncate">
               Supreme Student Council
             </h2>
@@ -106,12 +106,12 @@ function App() {
 
         {currentPage === 'welcome' && (
           <div className="flex items-center gap-2 flex-shrink-0 relative" ref={menuRef}>
-            {/* Council Officials Button */}
+            {/* FIXED: Added 'hidden sm:inline-block' so this element hides on smaller mobile breakpoints */}
             <button 
               onClick={() => setShowRoster(true)}
-              className="text-[9px] sm:text-xs font-bold uppercase tracking-wider px-3 py-2 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 text-white transition-all"
+              className="hidden sm:inline-block text-[9px] sm:text-xs font-bold uppercase tracking-wider px-3 py-2 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 text-white transition-all"
             >
-              Officials
+              Council Officials
             </button>
 
             {/* Menu Dropdown Toggle Button */}
@@ -128,6 +128,17 @@ function App() {
             {/* Dropdown Options Box */}
             {showMenu && (
               <div className="absolute right-0 top-full mt-2 w-40 sm:w-48 bg-[#00381c] border border-white/10 rounded-xl p-1.5 shadow-2xl z-30 animate-fade-in">
+                {/* FIXED: Responsive wrapper injects button into context block ONLY on smaller smartphone profiles */}
+                <button 
+                  onClick={() => { 
+                    setShowMenu(false); 
+                    setShowRoster(true); 
+                  }}
+                  className="sm:hidden w-full text-left text-xs font-semibold px-3 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-white/5 transition-all uppercase tracking-wider"
+                >
+                  Council Officials
+                </button>
+                
                 <button 
                   onClick={() => { 
                     setShowMenu(false); 
@@ -140,7 +151,7 @@ function App() {
                 <button 
                   onClick={() => { 
                     setShowMenu(false); 
-                    setCurrentPage('gallery'); // 2. Connected the gallery view trigger link hook here
+                    setCurrentPage('gallery'); 
                   }}
                   className="w-full text-left text-xs font-semibold px-3 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-white/5 transition-all uppercase tracking-wider"
                 >
@@ -335,7 +346,6 @@ function App() {
         )}
 
         {/* ================= PAGE 6: GALLERY VIEW SCREEN ================= */}
-        {/* 3. Added the gallery rendering module wrapper matching your template styles */}
         {currentPage === 'gallery' && (
           <div className="w-full flex flex-col items-center animate-fade-in">
             <button 
