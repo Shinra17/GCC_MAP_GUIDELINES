@@ -1,6 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Main_building } from './components/Main_building';
 import { Anex_building } from './components/Anex_building';
+import { Contact } from './components/Contact';
+import Gallery from './components/Gallery'; // 1. Imported the Gallery component
 import './App.css';
 
 const coreOfficers = [
@@ -31,6 +33,19 @@ function App() {
   const [currentPage, setCurrentPage] = useState('welcome');
   const [showRoster, setShowRoster] = useState(false);
   const [activeCard, setActiveCard] = useState(null);
+  const [showMenu, setShowMenu] = useState(false);
+  const menuRef = useRef(null);
+
+  // Close menu dropdown automatically if user clicks anywhere outside of it
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setShowMenu(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   const guideItems = [
     { 
@@ -79,7 +94,7 @@ function App() {
           <div className="h-5 sm:h-6 w-[1px] bg-white/20 flex-shrink-0"></div>
           <img src="/SSC_LOGO.png" alt="SSC Logo" className="w-8 h-8 sm:w-11 sm:h-11 object-contain rounded-full bg-white/5 p-1 border border-white/20 shadow-inner flex-shrink-0" />
           <div className="h-5 sm:h-6 w-[1px] bg-white/20 flex-shrink-0"></div>  
-          <div className="ml-0.5 min-w-0">
+          <div className="ml-0.5 min-w-0" onClick={() => setCurrentPage('welcome')} className="cursor-pointer">
             <h2 className="text-[10px] sm:text-xs font-black tracking-wider sm:tracking-widest text-emerald-400 uppercase leading-tight truncate">
               Supreme Student Council
             </h2>
@@ -90,12 +105,62 @@ function App() {
         </div>
 
         {currentPage === 'welcome' && (
-          <button 
-            onClick={() => setShowRoster(true)}
-            className="text-[9px] sm:text-xs font-bold uppercase tracking-wider px-3 py-2 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 text-white transition-all flex-shrink-0"
-          >
-            Council Officials
-          </button>
+          <div className="flex items-center gap-2 flex-shrink-0 relative" ref={menuRef}>
+            {/* Council Officials Button */}
+            <button 
+              onClick={() => setShowRoster(true)}
+              className="text-[9px] sm:text-xs font-bold uppercase tracking-wider px-3 py-2 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 text-white transition-all"
+            >
+              Council Officials
+            </button>
+
+            {/* Menu Dropdown Toggle Button */}
+            <button
+              onClick={() => setShowMenu(!showMenu)}
+              className="p-2 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 text-white transition-all flex items-center justify-center"
+              aria-label="Toggle Menu"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-3.5 h-3.5 sm:w-4 sm:h-4">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+              </svg>
+            </button>
+
+            {/* Dropdown Options Box */}
+            {showMenu && (
+              <div className="absolute right-0 top-full mt-2 w-40 sm:w-48 bg-[#00381c] border border-white/10 rounded-xl p-1.5 shadow-2xl z-30 animate-fade-in">
+                <button 
+                  onClick={() => { 
+                    setShowMenu(false); 
+                    setCurrentPage('contact'); 
+                  }}
+                  className="w-full text-left text-xs font-semibold px-3 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-white/5 transition-all uppercase tracking-wider"
+                >
+                  Contact
+                </button>
+                <button 
+                  onClick={() => { 
+                    setShowMenu(false); 
+                    setCurrentPage('gallery'); // 2. Connected the gallery view trigger link hook here
+                  }}
+                  className="w-full text-left text-xs font-semibold px-3 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-white/5 transition-all uppercase tracking-wider"
+                >
+                  Gallery
+                </button>
+                <a 
+                  href="https://drive.google.com/file/d/140C83vO-ad-yvvKfKw9WfqUeHkyiMYXY/view?fbclid=IwY2xjawSepFhleHRuA2FlbQIxMABicmlkETFWTjlUb2t1cnBqNk9iclZuc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHnmzEJHJtv1X_DDX8Odq9FEINLKbovZflGeILmtLKJDjy_PWiraFXjR0trF4_aem_hHQBqil7g5zECdnkE1M6-Q" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setShowMenu(false)}
+                  className="w-full text-left text-xs font-semibold px-3 py-2.5 rounded-lg text-emerald-400 hover:text-emerald-300 hover:bg-white/5 transition-all uppercase tracking-wider flex items-center justify-between"
+                >
+                  <span>CBL</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-3 h-3">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                  </svg>
+                </a>
+              </div>
+            )}
+          </div>
         )}
       </header>
 
@@ -130,7 +195,7 @@ function App() {
             {/* Right Guide Info Block */}
             <div className="w-full lg:w-3/5 min-h-[280px] flex items-center">
               {activeCard === null ? (
-                /* Grid Selection Mode (3 columns on desktop breaks 5 items into 2 neat rows) */
+                /* Grid Selection Mode */
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 w-full transition-all duration-300 animate-fade-in">
                   {guideItems.map((item, idx) => (
                     <button 
@@ -250,12 +315,51 @@ function App() {
           </div>
         )}
 
+        {/* ================= PAGE 5: CONTACT VIEW SCREEN ================= */}
+        {currentPage === 'contact' && (
+          <div className="w-full flex flex-col items-center animate-fade-in">
+            <button 
+              onClick={() => setCurrentPage('welcome')} 
+              className="mb-4 text-slate-400 hover:text-white transition-colors flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider self-start bg-white/5 px-4 py-2.5 rounded-xl border border-white/10 backdrop-blur-md active:scale-95"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-3.5 h-3.5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+              </svg>
+              <span>Main Menu</span>
+            </button>
+            
+            <div className="w-full h-[60vh] sm:h-[65vh] md:h-[70vh] overflow-y-auto rounded-2xl bg-white/[0.01] border border-white/5 backdrop-blur-sm custom-scrollbar flex items-center justify-center p-2 sm:p-6">
+              <Contact />
+            </div>
+          </div>
+        )}
+
+        {/* ================= PAGE 6: GALLERY VIEW SCREEN ================= */}
+        {/* 3. Added the gallery rendering module wrapper matching your template styles */}
+        {currentPage === 'gallery' && (
+          <div className="w-full flex flex-col items-center animate-fade-in">
+            <button 
+              onClick={() => setCurrentPage('welcome')} 
+              className="mb-4 text-slate-400 hover:text-white transition-colors flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider self-start bg-white/5 px-4 py-2.5 rounded-xl border border-white/10 backdrop-blur-md active:scale-95"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-3.5 h-3.5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+              </svg>
+              <span>Main Menu</span>
+            </button>
+            
+            <div className="w-full h-[60vh] sm:h-[65vh] md:h-[70vh] overflow-y-auto rounded-2xl bg-white/[0.01] border border-white/5 backdrop-blur-sm custom-scrollbar p-2 sm:p-6">
+              <Gallery />
+            </div>
+          </div>
+        )}
+
       </main>
 
       {/* Footer Branding Area */}
       <footer className="relative z-20 w-full max-w-7xl mx-auto border-t border-white/10 pt-4 mt-6 text-center sm:flex sm:justify-between sm:items-center">
         <p className="text-[11px] text-slate-400 font-medium tracking-wide">
-          &copy; 2026 Gingoog City Colleges &bull; Supreme Student Council
+          &copy; 2026 Gingoog City Colleges, Inc. &bull; Supreme Student Council
         </p>
         <p className="text-[10px] text-emerald-400/70 mt-1 sm:mt-0 font-semibold tracking-widest uppercase">
           2026-2027
@@ -278,11 +382,10 @@ function App() {
                 </button>
               </div>
 
-              {/* Roster Layout - Executive Board */}
+              {/* Executive Board */}
               <section className="space-y-6">
                 <h3 className="text-[10px] font-extrabold tracking-widest uppercase text-center text-slate-400">Executive Board</h3>
                 
-                {/* President */}
                 <div className="flex flex-col items-center">
                   <div className="w-28 h-28 sm:w-36 sm:h-36 rounded-full border-2 border-emerald-400 bg-white/5 overflow-hidden shadow-md">
                     <img src={coreOfficers[0]?.img} alt={coreOfficers[0]?.name} className="w-full h-full object-cover" />
@@ -291,7 +394,6 @@ function App() {
                   <p className="text-[11px] sm:text-xs text-emerald-400 font-medium">{coreOfficers[0]?.role}</p>
                 </div>
 
-                {/* Remaining Officers */}
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 justify-center">
                   {coreOfficers.slice(1).map((officer, i) => (
                     <div key={i} className="flex flex-col items-center bg-white/[0.02] border border-white/5 p-3 rounded-xl text-center shadow-sm hover:border-white/10 transition-colors w-full">
@@ -305,11 +407,10 @@ function App() {
                 </div>
               </section>
 
-              {/* Roster Layout - Senate */}
+              {/* Student Senate */}
               <section className="space-y-4 mt-8 pt-6 border-t border-white/10">
                 <h3 className="text-[10px] font-extrabold tracking-widest uppercase text-center text-slate-400">Student Senate</h3>
                 
-                {/* Senate Head */}
                 <div className="flex flex-col items-center">
                   <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full border border-emerald-400/60 bg-white/5 overflow-hidden">
                     <img src={senators[0]?.img} alt={senators[0]?.name} className="w-full h-full object-cover" />
@@ -318,7 +419,6 @@ function App() {
                   <p className="text-[10px] text-emerald-300 font-medium">{senators[0]?.role}</p>
                 </div>
 
-                {/* General Senators Grid */}
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                   {senators.slice(1).map((senator, i) => (
                     <div key={i} className="flex flex-col items-center p-3 rounded-xl bg-white/[0.01] border border-white/5 w-full">
